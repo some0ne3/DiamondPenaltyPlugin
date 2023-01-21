@@ -2,7 +2,6 @@ package me.someone3.diamondpenalty;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,12 +26,9 @@ public class DiamondBreakListener implements Listener {
         if (player.hasPermission("diamondpenalty.bypass")) return;
         if (!player.hasPermission("diamondpenalty.penalty")) return;
 
-        int dropSize = 1;
-
         ItemStack playerTool = player.getInventory().getItemInMainHand();
-        if (playerTool.containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)) {
-            dropSize = playerTool.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
-        }
+        int dropSize = block.getDrops(playerTool).size();
+        if (dropSize == 0) return;
 
         if (Math.random() < plugin.getConfig().getDouble("penalty-chance")) {
             event.setDropItems(false);
