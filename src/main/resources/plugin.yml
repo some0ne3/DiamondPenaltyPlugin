@@ -1,0 +1,20 @@
+name: DiamondPenalty
+version: '${project.version}'
+main: me.someone3.diamondpenalty.DiamondPenaltyPlugin
+api-version: 1.19
+authors: [ someone3 ]
+commands:
+  diamondpenalty:
+    description: Your description
+    usage: /diamondpenalty reload
+    permission: diamondpenalty.reload
+permissions:
+    diamondpenalty.reload:
+        description: Permission required to reload the plugin
+        default: op
+    diamondpenalty.bypass:
+        description: Permission required to bypass the plugin
+        default: op
+    diamondpenalty.penalty:
+        description: Permission required to get penalty
+        default: false
